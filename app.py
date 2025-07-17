@@ -1,4 +1,4 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Query
 import pandas as pd
 
 app = FastAPI(title="Spotify Recommendation API")
@@ -18,3 +18,14 @@ def recommend(track_id: str, top_k: int = 5):
         raise HTTPException(status_code=404, detail="Track ID not found or no recommendations available")
 
     return results.to_dict(orient='records')
+
+@app.get("/recommend_by_name/")
+def recommend_by_name(track_name: str = Query(..., description="Full or partial track name"), top_k: int = 5):
+    # Tìm track_id theo tên track (case-insensitive contains)
+    matched_tracks = recommend_df[recommend_df['recommended_name'].str.contains(track_name, case=False, na=False)]
+
+    if matched_tracks.empty:
+        raise HTTPException(status_code=404, detail="No tracks found matching the name")
+
+    # Trả top_k kết quả đầu tiên
+    return matched_tracks.head(top_k).to_dict(orient='records')
