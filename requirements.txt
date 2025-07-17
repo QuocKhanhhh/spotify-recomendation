@@ -1,0 +1,5 @@
+spotipy
+pandas
+numpy
+fastapi
+uvicorn
