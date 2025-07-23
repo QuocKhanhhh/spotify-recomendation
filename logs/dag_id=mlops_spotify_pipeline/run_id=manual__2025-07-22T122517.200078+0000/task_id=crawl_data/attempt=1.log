@@ -1,0 +1,38 @@
+[2025-07-22T12:25:18.788+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-07-22T12:25:18.814+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: mlops_spotify_pipeline.crawl_data manual__2025-07-22T12:25:17.200078+00:00 [queued]>
+[2025-07-22T12:25:18.820+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: mlops_spotify_pipeline.crawl_data manual__2025-07-22T12:25:17.200078+00:00 [queued]>
+[2025-07-22T12:25:18.821+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 2
+[2025-07-22T12:25:18.833+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): crawl_data> on 2025-07-22 12:25:17.200078+00:00
+[2025-07-22T12:25:18.842+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'mlops_spotify_pipeline', 'crawl_data', 'manual__2025-07-22T12:25:17.200078+00:00', '--job-id', '33', '--raw', '--subdir', 'DAGS_FOLDER/spotify_crawl_dag.py', '--cfg-path', '/tmp/tmpahwyd9s9']
+[2025-07-22T12:25:18.845+0000] {standard_task_runner.py:91} INFO - Job 33: Subtask crawl_data
+[2025-07-22T12:25:18.846+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=202) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-07-22T12:25:18.847+0000] {standard_task_runner.py:63} INFO - Started process 215 to run task
+[2025-07-22T12:25:18.913+0000] {task_command.py:426} INFO - Running <TaskInstance: mlops_spotify_pipeline.crawl_data manual__2025-07-22T12:25:17.200078+00:00 [running]> on host 639d33bab6fe
+[2025-07-22T12:25:19.013+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='mlops_spotify_pipeline' AIRFLOW_CTX_TASK_ID='crawl_data' AIRFLOW_CTX_EXECUTION_DATE='2025-07-22T12:25:17.200078+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-07-22T12:25:17.200078+00:00'
+[2025-07-22T12:25:19.014+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-07-22T12:25:19.044+0000] {checkpoint_manager.py:12} INFO - Loaded checkpoint with 6 playlist IDs
+[2025-07-22T12:25:19.045+0000] {spotify_crawl_dag.py:18} INFO - Found 6 pending playlists
+[2025-07-22T12:25:19.046+0000] {spotify_crawl_dag.py:22} INFO - Processing playlist 6XFOsAdp88ptBCdqUMAfmP
+[2025-07-22T12:25:19.049+0000] {spotify_crawl_dag.py:29} ERROR - Unexpected error for playlist 6XFOsAdp88ptBCdqUMAfmP: string indices must be integers, not 'str'
+[2025-07-22T12:25:19.050+0000] {checkpoint_manager.py:19} INFO - Saving checkpoint with 6 playlist IDs
+[2025-07-22T12:25:19.056+0000] {spotify_crawl_dag.py:22} INFO - Processing playlist 2JaUyOhoyfmDJlQy1CYjQm
+[2025-07-22T12:25:19.058+0000] {spotify_crawl_dag.py:29} ERROR - Unexpected error for playlist 2JaUyOhoyfmDJlQy1CYjQm: string indices must be integers, not 'str'
+[2025-07-22T12:25:19.059+0000] {checkpoint_manager.py:19} INFO - Saving checkpoint with 6 playlist IDs
+[2025-07-22T12:25:19.061+0000] {spotify_crawl_dag.py:22} INFO - Processing playlist 02zSPmcae3ct4moT8om7kK
+[2025-07-22T12:25:19.064+0000] {spotify_crawl_dag.py:29} ERROR - Unexpected error for playlist 02zSPmcae3ct4moT8om7kK: string indices must be integers, not 'str'
+[2025-07-22T12:25:19.064+0000] {checkpoint_manager.py:19} INFO - Saving checkpoint with 6 playlist IDs
+[2025-07-22T12:25:19.067+0000] {spotify_crawl_dag.py:22} INFO - Processing playlist 1SkrX3lyW8UBELc68IRC4j
+[2025-07-22T12:25:19.069+0000] {spotify_crawl_dag.py:29} ERROR - Unexpected error for playlist 1SkrX3lyW8UBELc68IRC4j: string indices must be integers, not 'str'
+[2025-07-22T12:25:19.069+0000] {checkpoint_manager.py:19} INFO - Saving checkpoint with 6 playlist IDs
+[2025-07-22T12:25:19.072+0000] {spotify_crawl_dag.py:22} INFO - Processing playlist 6VCsmVYfvQI8lmSMEAwWso
+[2025-07-22T12:25:19.075+0000] {spotify_crawl_dag.py:29} ERROR - Unexpected error for playlist 6VCsmVYfvQI8lmSMEAwWso: string indices must be integers, not 'str'
+[2025-07-22T12:25:19.075+0000] {checkpoint_manager.py:19} INFO - Saving checkpoint with 6 playlist IDs
+[2025-07-22T12:25:19.077+0000] {spotify_crawl_dag.py:22} INFO - Processing playlist 0mrqaVOe6KYEEcaSYhVK4a
+[2025-07-22T12:25:19.080+0000] {spotify_crawl_dag.py:29} ERROR - Unexpected error for playlist 0mrqaVOe6KYEEcaSYhVK4a: string indices must be integers, not 'str'
+[2025-07-22T12:25:19.080+0000] {checkpoint_manager.py:19} INFO - Saving checkpoint with 6 playlist IDs
+[2025-07-22T12:25:19.082+0000] {python.py:237} INFO - Done. Returned value was: None
+[2025-07-22T12:25:19.083+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-07-22T12:25:19.093+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=mlops_spotify_pipeline, task_id=crawl_data, run_id=manual__2025-07-22T12:25:17.200078+00:00, execution_date=20250722T122517, start_date=20250722T122518, end_date=20250722T122519
+[2025-07-22T12:25:19.141+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2025-07-22T12:25:19.163+0000] {taskinstance.py:3498} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-07-22T12:25:19.165+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

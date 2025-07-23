@@ -1,0 +1,22 @@
+[2025-07-22T13:32:39.105+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-07-22T13:32:39.132+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: mlops_spotify_pipeline.crawl_data manual__2025-07-22T13:29:51.377793+00:00 [queued]>
+[2025-07-22T13:32:39.139+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: mlops_spotify_pipeline.crawl_data manual__2025-07-22T13:29:51.377793+00:00 [queued]>
+[2025-07-22T13:32:39.140+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 2
+[2025-07-22T13:32:39.153+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): crawl_data> on 2025-07-22 13:29:51.377793+00:00
+[2025-07-22T13:32:39.161+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'mlops_spotify_pipeline', 'crawl_data', 'manual__2025-07-22T13:29:51.377793+00:00', '--job-id', '49', '--raw', '--subdir', 'DAGS_FOLDER/spotify_crawl_dag.py', '--cfg-path', '/tmp/tmpog9vy3xe']
+[2025-07-22T13:32:39.164+0000] {standard_task_runner.py:91} INFO - Job 49: Subtask crawl_data
+[2025-07-22T13:32:39.166+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=301) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-07-22T13:32:39.167+0000] {standard_task_runner.py:63} INFO - Started process 314 to run task
+[2025-07-22T13:32:39.225+0000] {task_command.py:426} INFO - Running <TaskInstance: mlops_spotify_pipeline.crawl_data manual__2025-07-22T13:29:51.377793+00:00 [running]> on host 4bcd09cf5852
+[2025-07-22T13:32:39.316+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='mlops_spotify_pipeline' AIRFLOW_CTX_TASK_ID='crawl_data' AIRFLOW_CTX_EXECUTION_DATE='2025-07-22T13:29:51.377793+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-07-22T13:29:51.377793+00:00'
+[2025-07-22T13:32:39.317+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-07-22T13:32:39.329+0000] {spotify_crawl_dag.py:21} INFO - Starting crawl_pending_playlists task
+[2025-07-22T13:32:39.340+0000] {checkpoint_manager.py:12} INFO - Loaded checkpoint with 6 playlist IDs
+[2025-07-22T13:32:39.342+0000] {spotify_crawl_dag.py:24} INFO - Found 0 pending playlists: []
+[2025-07-22T13:32:39.342+0000] {spotify_crawl_dag.py:39} INFO - Completed crawl_pending_playlists task
+[2025-07-22T13:32:39.342+0000] {python.py:237} INFO - Done. Returned value was: None
+[2025-07-22T13:32:39.343+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-07-22T13:32:39.354+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=mlops_spotify_pipeline, task_id=crawl_data, run_id=manual__2025-07-22T13:29:51.377793+00:00, execution_date=20250722T132951, start_date=20250722T133239, end_date=20250722T133239
+[2025-07-22T13:32:39.381+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2025-07-22T13:32:39.403+0000] {taskinstance.py:3498} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-07-22T13:32:39.405+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

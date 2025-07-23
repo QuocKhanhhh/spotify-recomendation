@@ -1,0 +1,4 @@
+spotify:
+  client_id : 'd6b97427c7694270b08adde09f9ef9b8'
+  client_secret : '031e8f19efac4a81957603c34cdee531'
+  redirect_uri: "https://127.0.0.1:8888/"

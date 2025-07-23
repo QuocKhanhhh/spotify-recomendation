@@ -1,0 +1,81 @@
+[2025-07-22T13:27:23.256+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-07-22T13:27:23.282+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: mlops_spotify_pipeline.crawl_data manual__2025-07-22T13:27:21.385182+00:00 [queued]>
+[2025-07-22T13:27:23.290+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: mlops_spotify_pipeline.crawl_data manual__2025-07-22T13:27:21.385182+00:00 [queued]>
+[2025-07-22T13:27:23.290+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 2
+[2025-07-22T13:27:23.302+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): crawl_data> on 2025-07-22 13:27:21.385182+00:00
+[2025-07-22T13:27:23.311+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'mlops_spotify_pipeline', 'crawl_data', 'manual__2025-07-22T13:27:21.385182+00:00', '--job-id', '45', '--raw', '--subdir', 'DAGS_FOLDER/spotify_crawl_dag.py', '--cfg-path', '/tmp/tmpr7e63nhw']
+[2025-07-22T13:27:23.314+0000] {standard_task_runner.py:91} INFO - Job 45: Subtask crawl_data
+[2025-07-22T13:27:23.315+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=185) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-07-22T13:27:23.315+0000] {standard_task_runner.py:63} INFO - Started process 198 to run task
+[2025-07-22T13:27:23.375+0000] {task_command.py:426} INFO - Running <TaskInstance: mlops_spotify_pipeline.crawl_data manual__2025-07-22T13:27:21.385182+00:00 [running]> on host 472832b3ff54
+[2025-07-22T13:27:23.467+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='mlops_spotify_pipeline' AIRFLOW_CTX_TASK_ID='crawl_data' AIRFLOW_CTX_EXECUTION_DATE='2025-07-22T13:27:21.385182+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-07-22T13:27:21.385182+00:00'
+[2025-07-22T13:27:23.468+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-07-22T13:27:23.503+0000] {spotify_crawl_dag.py:20} INFO - Starting crawl_pending_playlists task
+[2025-07-22T13:27:23.515+0000] {checkpoint_manager.py:12} INFO - Loaded checkpoint with 6 playlist IDs
+[2025-07-22T13:27:23.519+0000] {spotify_crawl_dag.py:23} INFO - Found 6 pending playlists: ['6XFOsAdp88ptBCdqUMAfmP', '2JaUyOhoyfmDJlQy1CYjQm', '02zSPmcae3ct4moT8om7kK', '1SkrX3lyW8UBELc68IRC4j', '6VCsmVYfvQI8lmSMEAwWso', '0mrqaVOe6KYEEcaSYhVK4a']
+[2025-07-22T13:27:23.520+0000] {spotify_crawl_dag.py:27} INFO - Processing playlist 6XFOsAdp88ptBCdqUMAfmP
+[2025-07-22T13:27:23.814+0000] {token_manager.py:84} INFO - Successfully obtained client credentials token
+[2025-07-22T13:27:23.816+0000] {crawl_playlist.py:16} INFO - Crawling playlist 6XFOsAdp88ptBCdqUMAfmP
+[2025-07-22T13:27:23.816+0000] {spotify_client.py:37} INFO - Fetching tracks for playlist 6XFOsAdp88ptBCdqUMAfmP at offset 0
+[2025-07-22T13:27:24.555+0000] {spotify_client.py:37} INFO - Fetching tracks for playlist 6XFOsAdp88ptBCdqUMAfmP at offset 100
+[2025-07-22T13:27:24.806+0000] {spotify_client.py:97} INFO - Fetched 152 tracks for playlist 6XFOsAdp88ptBCdqUMAfmP
+[2025-07-22T13:27:24.807+0000] {crawl_playlist.py:59} INFO - Saving 152 tracks for playlist 6XFOsAdp88ptBCdqUMAfmP
+[2025-07-22T13:27:24.827+0000] {checkpoint_manager.py:19} INFO - Saving checkpoint with 6 playlist IDs
+[2025-07-22T13:27:24.838+0000] {spotify_crawl_dag.py:32} INFO - Updated checkpoint for playlist 6XFOsAdp88ptBCdqUMAfmP with status done
+[2025-07-22T13:27:24.839+0000] {spotify_crawl_dag.py:27} INFO - Processing playlist 2JaUyOhoyfmDJlQy1CYjQm
+[2025-07-22T13:27:25.106+0000] {token_manager.py:84} INFO - Successfully obtained client credentials token
+[2025-07-22T13:27:25.108+0000] {crawl_playlist.py:16} INFO - Crawling playlist 2JaUyOhoyfmDJlQy1CYjQm
+[2025-07-22T13:27:25.108+0000] {spotify_client.py:37} INFO - Fetching tracks for playlist 2JaUyOhoyfmDJlQy1CYjQm at offset 0
+[2025-07-22T13:27:25.429+0000] {spotify_client.py:97} INFO - Fetched 30 tracks for playlist 2JaUyOhoyfmDJlQy1CYjQm
+[2025-07-22T13:27:25.430+0000] {crawl_playlist.py:59} INFO - Saving 30 tracks for playlist 2JaUyOhoyfmDJlQy1CYjQm
+[2025-07-22T13:27:25.435+0000] {checkpoint_manager.py:19} INFO - Saving checkpoint with 6 playlist IDs
+[2025-07-22T13:27:25.438+0000] {spotify_crawl_dag.py:32} INFO - Updated checkpoint for playlist 2JaUyOhoyfmDJlQy1CYjQm with status done
+[2025-07-22T13:27:25.439+0000] {spotify_crawl_dag.py:27} INFO - Processing playlist 02zSPmcae3ct4moT8om7kK
+[2025-07-22T13:27:25.659+0000] {token_manager.py:84} INFO - Successfully obtained client credentials token
+[2025-07-22T13:27:25.660+0000] {crawl_playlist.py:16} INFO - Crawling playlist 02zSPmcae3ct4moT8om7kK
+[2025-07-22T13:27:25.661+0000] {spotify_client.py:37} INFO - Fetching tracks for playlist 02zSPmcae3ct4moT8om7kK at offset 0
+[2025-07-22T13:27:26.256+0000] {spotify_client.py:37} INFO - Fetching tracks for playlist 02zSPmcae3ct4moT8om7kK at offset 100
+[2025-07-22T13:27:26.517+0000] {spotify_client.py:97} INFO - Fetched 129 tracks for playlist 02zSPmcae3ct4moT8om7kK
+[2025-07-22T13:27:26.518+0000] {crawl_playlist.py:59} INFO - Saving 129 tracks for playlist 02zSPmcae3ct4moT8om7kK
+[2025-07-22T13:27:26.526+0000] {checkpoint_manager.py:19} INFO - Saving checkpoint with 6 playlist IDs
+[2025-07-22T13:27:26.528+0000] {spotify_crawl_dag.py:32} INFO - Updated checkpoint for playlist 02zSPmcae3ct4moT8om7kK with status done
+[2025-07-22T13:27:26.528+0000] {spotify_crawl_dag.py:27} INFO - Processing playlist 1SkrX3lyW8UBELc68IRC4j
+[2025-07-22T13:27:26.767+0000] {token_manager.py:84} INFO - Successfully obtained client credentials token
+[2025-07-22T13:27:26.769+0000] {crawl_playlist.py:16} INFO - Crawling playlist 1SkrX3lyW8UBELc68IRC4j
+[2025-07-22T13:27:26.769+0000] {spotify_client.py:37} INFO - Fetching tracks for playlist 1SkrX3lyW8UBELc68IRC4j at offset 0
+[2025-07-22T13:27:27.377+0000] {spotify_client.py:37} INFO - Fetching tracks for playlist 1SkrX3lyW8UBELc68IRC4j at offset 100
+[2025-07-22T13:27:27.623+0000] {spotify_client.py:97} INFO - Fetched 117 tracks for playlist 1SkrX3lyW8UBELc68IRC4j
+[2025-07-22T13:27:27.623+0000] {crawl_playlist.py:28} WARNING - Skipping invalid track in playlist 1SkrX3lyW8UBELc68IRC4j: None
+[2025-07-22T13:27:27.624+0000] {crawl_playlist.py:59} INFO - Saving 116 tracks for playlist 1SkrX3lyW8UBELc68IRC4j
+[2025-07-22T13:27:27.644+0000] {checkpoint_manager.py:19} INFO - Saving checkpoint with 6 playlist IDs
+[2025-07-22T13:27:27.647+0000] {spotify_crawl_dag.py:32} INFO - Updated checkpoint for playlist 1SkrX3lyW8UBELc68IRC4j with status done
+[2025-07-22T13:27:27.648+0000] {spotify_crawl_dag.py:27} INFO - Processing playlist 6VCsmVYfvQI8lmSMEAwWso
+[2025-07-22T13:27:27.888+0000] {token_manager.py:84} INFO - Successfully obtained client credentials token
+[2025-07-22T13:27:27.891+0000] {crawl_playlist.py:16} INFO - Crawling playlist 6VCsmVYfvQI8lmSMEAwWso
+[2025-07-22T13:27:27.891+0000] {spotify_client.py:37} INFO - Fetching tracks for playlist 6VCsmVYfvQI8lmSMEAwWso at offset 0
+[2025-07-22T13:27:28.354+0000] {spotify_client.py:37} INFO - Fetching tracks for playlist 6VCsmVYfvQI8lmSMEAwWso at offset 100
+[2025-07-22T13:27:28.823+0000] {spotify_client.py:37} INFO - Fetching tracks for playlist 6VCsmVYfvQI8lmSMEAwWso at offset 200
+[2025-07-22T13:27:29.377+0000] {spotify_client.py:37} INFO - Fetching tracks for playlist 6VCsmVYfvQI8lmSMEAwWso at offset 300
+[2025-07-22T13:27:29.737+0000] {spotify_client.py:37} INFO - Fetching tracks for playlist 6VCsmVYfvQI8lmSMEAwWso at offset 400
+[2025-07-22T13:27:30.243+0000] {spotify_client.py:37} INFO - Fetching tracks for playlist 6VCsmVYfvQI8lmSMEAwWso at offset 500
+[2025-07-22T13:27:30.740+0000] {spotify_client.py:37} INFO - Fetching tracks for playlist 6VCsmVYfvQI8lmSMEAwWso at offset 600
+[2025-07-22T13:27:30.945+0000] {spotify_client.py:97} INFO - Fetched 625 tracks for playlist 6VCsmVYfvQI8lmSMEAwWso
+[2025-07-22T13:27:30.946+0000] {crawl_playlist.py:59} INFO - Saving 625 tracks for playlist 6VCsmVYfvQI8lmSMEAwWso
+[2025-07-22T13:27:30.958+0000] {checkpoint_manager.py:19} INFO - Saving checkpoint with 6 playlist IDs
+[2025-07-22T13:27:30.961+0000] {spotify_crawl_dag.py:32} INFO - Updated checkpoint for playlist 6VCsmVYfvQI8lmSMEAwWso with status done
+[2025-07-22T13:27:30.961+0000] {spotify_crawl_dag.py:27} INFO - Processing playlist 0mrqaVOe6KYEEcaSYhVK4a
+[2025-07-22T13:27:31.138+0000] {token_manager.py:84} INFO - Successfully obtained client credentials token
+[2025-07-22T13:27:31.139+0000] {crawl_playlist.py:16} INFO - Crawling playlist 0mrqaVOe6KYEEcaSYhVK4a
+[2025-07-22T13:27:31.140+0000] {spotify_client.py:37} INFO - Fetching tracks for playlist 0mrqaVOe6KYEEcaSYhVK4a at offset 0
+[2025-07-22T13:27:31.773+0000] {spotify_client.py:37} INFO - Fetching tracks for playlist 0mrqaVOe6KYEEcaSYhVK4a at offset 100
+[2025-07-22T13:27:32.154+0000] {spotify_client.py:97} INFO - Fetched 162 tracks for playlist 0mrqaVOe6KYEEcaSYhVK4a
+[2025-07-22T13:27:32.155+0000] {crawl_playlist.py:59} INFO - Saving 162 tracks for playlist 0mrqaVOe6KYEEcaSYhVK4a
+[2025-07-22T13:27:32.161+0000] {checkpoint_manager.py:19} INFO - Saving checkpoint with 6 playlist IDs
+[2025-07-22T13:27:32.163+0000] {spotify_crawl_dag.py:32} INFO - Updated checkpoint for playlist 0mrqaVOe6KYEEcaSYhVK4a with status done
+[2025-07-22T13:27:32.163+0000] {spotify_crawl_dag.py:38} INFO - Completed crawl_pending_playlists task
+[2025-07-22T13:27:32.164+0000] {python.py:237} INFO - Done. Returned value was: None
+[2025-07-22T13:27:32.165+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-07-22T13:27:32.174+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=mlops_spotify_pipeline, task_id=crawl_data, run_id=manual__2025-07-22T13:27:21.385182+00:00, execution_date=20250722T132721, start_date=20250722T132723, end_date=20250722T132732
+[2025-07-22T13:27:32.224+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2025-07-22T13:27:32.243+0000] {taskinstance.py:3498} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-07-22T13:27:32.246+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

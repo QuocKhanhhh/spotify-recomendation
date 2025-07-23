@@ -1,0 +1,57 @@
+services:
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: airflow
+      POSTGRES_PASSWORD: airflow
+      POSTGRES_DB: airflow
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: always
+
+  airflow-webserver:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - postgres
+    environment:
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
+      AIRFLOW__WEBSERVER__DEFAULT_USER: admin
+      AIRFLOW__WEBSERVER__DEFAULT_PASSWORD: admin
+      AIRFLOW__CORE__DAGS_FOLDER: /opt/airflow/dags
+      AIRFLOW__LOGGING__BASE_LOG_FOLDER: /opt/airflow/logs
+    volumes:
+      - E:/docker-projects/mlops/dags:/opt/airflow/dags
+      - E:/docker-projects/mlops/plugins:/opt/airflow/plugins
+      - E:/docker-projects/mlops/data:/opt/airflow/data
+      - E:/docker-projects/mlops/logs:/opt/airflow/logs
+      - E:/docker-projects/mlops/config:/opt/airflow/config
+    ports:
+      - "8080:8080"
+    command: webserver
+    restart: always
+
+  airflow-scheduler:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - postgres
+    environment:
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: postgresql+psycopg2://airflow:airflow@postgres/airflow
+      AIRFLOW__CORE__DAGS_FOLDER: /opt/airflow/dags
+      AIRFLOW__LOGGING__BASE_LOG_FOLDER: /opt/airflow/logs
+    volumes:
+      - E:/docker-projects/mlops/dags:/opt/airflow/dags
+      - E:/docker-projects/mlops/plugins:/opt/airflow/plugins
+      - E:/docker-projects/mlops/data:/opt/airflow/data
+      - E:/docker-projects/mlops/logs:/opt/airflow/logs
+      - E:/docker-projects/mlops/config:/opt/airflow/config
+    command: scheduler
+    restart: always
+
+volumes:
+  postgres_data:

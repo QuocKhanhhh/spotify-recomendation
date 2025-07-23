@@ -1,0 +1,43 @@
+[2025-07-22T13:50:07.385+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-07-22T13:50:07.413+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: mlops_spotify_pipeline.preprocess_data manual__2025-07-22T13:50:00.853864+00:00 [queued]>
+[2025-07-22T13:50:07.420+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: mlops_spotify_pipeline.preprocess_data manual__2025-07-22T13:50:00.853864+00:00 [queued]>
+[2025-07-22T13:50:07.421+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 2
+[2025-07-22T13:50:07.433+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): preprocess_data> on 2025-07-22 13:50:00.853864+00:00
+[2025-07-22T13:50:07.443+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'mlops_spotify_pipeline', 'preprocess_data', 'manual__2025-07-22T13:50:00.853864+00:00', '--job-id', '54', '--raw', '--subdir', 'DAGS_FOLDER/spotify_crawl_dag.py', '--cfg-path', '/tmp/tmpgyq9xvqp']
+[2025-07-22T13:50:07.446+0000] {standard_task_runner.py:91} INFO - Job 54: Subtask preprocess_data
+[2025-07-22T13:50:07.446+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=216) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-07-22T13:50:07.447+0000] {standard_task_runner.py:63} INFO - Started process 229 to run task
+[2025-07-22T13:50:07.503+0000] {task_command.py:426} INFO - Running <TaskInstance: mlops_spotify_pipeline.preprocess_data manual__2025-07-22T13:50:00.853864+00:00 [running]> on host 50b774ef1b2b
+[2025-07-22T13:50:07.589+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='mlops_spotify_pipeline' AIRFLOW_CTX_TASK_ID='preprocess_data' AIRFLOW_CTX_EXECUTION_DATE='2025-07-22T13:50:00.853864+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-07-22T13:50:00.853864+00:00'
+[2025-07-22T13:50:07.590+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-07-22T13:50:07.602+0000] {spotify_crawl_dag.py:42} INFO - Starting preprocess_data_wrapper task
+[2025-07-22T13:50:07.603+0000] {spotify_crawl_dag.py:49} INFO - Reading /opt/***/data/crawled_tracks.csv
+[2025-07-22T13:50:07.614+0000] {spotify_crawl_dag.py:51} INFO - Loaded DataFrame with 1214 rows and columns: ['playlist_id', 'track_id', 'track_name', 'artist_name', 'release_date', 'popularity', 'explicit', 'external_url', 'artist_genres']
+[2025-07-22T13:50:07.614+0000] {spotify_crawl_dag.py:57} INFO - Starting data preprocessing
+[2025-07-22T13:50:07.615+0000] {preprocess.py:54} INFO - Starting preprocess_data with 1214 rows and columns: ['playlist_id', 'track_id', 'track_name', 'artist_name', 'release_date', 'popularity', 'explicit', 'external_url', 'artist_genres']
+[2025-07-22T13:50:07.615+0000] {preprocess.py:64} INFO - Cleaning NaN and duplicates
+[2025-07-22T13:50:07.621+0000] {preprocess.py:66} INFO - After cleaning NaN and duplicates: 985 rows
+[2025-07-22T13:50:07.621+0000] {preprocess.py:73} INFO - Processing release_date
+[2025-07-22T13:50:07.632+0000] {preprocess.py:79} INFO - Completed release_date processing
+[2025-07-22T13:50:07.632+0000] {preprocess.py:36} INFO - Starting text cleaning
+[2025-07-22T13:50:07.637+0000] {preprocess.py:46} INFO - Cleaned column track_name
+[2025-07-22T13:50:07.640+0000] {preprocess.py:46} INFO - Cleaned column artist_name
+[2025-07-22T13:50:07.640+0000] {preprocess.py:50} INFO - Completed text cleaning
+[2025-07-22T13:50:07.641+0000] {preprocess.py:88} INFO - Processing artist_genres
+[2025-07-22T13:50:07.642+0000] {preprocess.py:93} INFO - Found 0 non-empty artist_genres entries out of 985
+[2025-07-22T13:50:07.642+0000] {preprocess.py:96} WARNING - No valid genres found. Using dummy TF-IDF features.
+[2025-07-22T13:50:07.644+0000] {preprocess.py:108} INFO - Processing popularity
+[2025-07-22T13:50:07.649+0000] {preprocess.py:113} INFO - Completed popularity processing
+[2025-07-22T13:50:07.649+0000] {preprocess.py:119} INFO - Processing explicit
+[2025-07-22T13:50:07.650+0000] {preprocess.py:122} INFO - Completed explicit processing
+[2025-07-22T13:50:07.650+0000] {preprocess.py:128} INFO - Creating features
+[2025-07-22T13:50:07.680+0000] {preprocess.py:136} INFO - Saved features to /opt/***/data/features.npz and clean data to /opt/***/data/clean_data.csv
+[2025-07-22T13:50:07.680+0000] {preprocess.py:137} INFO - Completed preprocess_data
+[2025-07-22T13:50:07.680+0000] {spotify_crawl_dag.py:59} INFO - Preprocessed data, features saved to /opt/***/data/features.npz
+[2025-07-22T13:50:07.697+0000] {spotify_crawl_dag.py:61} INFO - Completed preprocess_data_wrapper task
+[2025-07-22T13:50:07.697+0000] {python.py:237} INFO - Done. Returned value was: /opt/***/data/features.npz
+[2025-07-22T13:50:07.698+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-07-22T13:50:07.721+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=mlops_spotify_pipeline, task_id=preprocess_data, run_id=manual__2025-07-22T13:50:00.853864+00:00, execution_date=20250722T135000, start_date=20250722T135007, end_date=20250722T135007
+[2025-07-22T13:50:07.742+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2025-07-22T13:50:07.761+0000] {taskinstance.py:3498} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-07-22T13:50:07.764+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

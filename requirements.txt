@@ -1,3 +1,10 @@
+pandas
+scikit-learn
+scipy
+apache-airflow
+mlflow
+requests
+pyyaml
 spotipy
 pandas
 numpy

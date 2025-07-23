@@ -1,0 +1,125 @@
+[2025-07-22T13:32:40.883+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-07-22T13:32:40.912+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: mlops_spotify_pipeline.preprocess_data manual__2025-07-22T13:29:51.377793+00:00 [queued]>
+[2025-07-22T13:32:40.920+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: mlops_spotify_pipeline.preprocess_data manual__2025-07-22T13:29:51.377793+00:00 [queued]>
+[2025-07-22T13:32:40.921+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 2
+[2025-07-22T13:32:40.934+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): preprocess_data> on 2025-07-22 13:29:51.377793+00:00
+[2025-07-22T13:32:40.943+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'mlops_spotify_pipeline', 'preprocess_data', 'manual__2025-07-22T13:29:51.377793+00:00', '--job-id', '50', '--raw', '--subdir', 'DAGS_FOLDER/spotify_crawl_dag.py', '--cfg-path', '/tmp/tmpv0e_hdha']
+[2025-07-22T13:32:40.948+0000] {standard_task_runner.py:91} INFO - Job 50: Subtask preprocess_data
+[2025-07-22T13:32:40.950+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=315) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-07-22T13:32:40.950+0000] {standard_task_runner.py:63} INFO - Started process 332 to run task
+[2025-07-22T13:32:41.075+0000] {task_command.py:426} INFO - Running <TaskInstance: mlops_spotify_pipeline.preprocess_data manual__2025-07-22T13:29:51.377793+00:00 [running]> on host 4bcd09cf5852
+[2025-07-22T13:32:41.181+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='mlops_spotify_pipeline' AIRFLOW_CTX_TASK_ID='preprocess_data' AIRFLOW_CTX_EXECUTION_DATE='2025-07-22T13:29:51.377793+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-07-22T13:29:51.377793+00:00'
+[2025-07-22T13:32:41.183+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-07-22T13:32:41.196+0000] {spotify_crawl_dag.py:42} INFO - Starting preprocess_data_wrapper task
+[2025-07-22T13:32:41.198+0000] {spotify_crawl_dag.py:49} INFO - Reading /opt/***/data/crawled_tracks.csv
+[2025-07-22T13:32:41.213+0000] {spotify_crawl_dag.py:51} INFO - Loaded DataFrame with 1214 rows and columns: ['playlist_id', 'track_id', 'track_name', 'artist_name', 'release_date', 'popularity', 'explicit', 'external_url', 'artist_genres']
+[2025-07-22T13:32:41.214+0000] {spotify_crawl_dag.py:57} INFO - Starting data preprocessing
+[2025-07-22T13:32:41.214+0000] {preprocess.py:54} INFO - Starting preprocess_data with 1214 rows and columns: ['playlist_id', 'track_id', 'track_name', 'artist_name', 'release_date', 'popularity', 'explicit', 'external_url', 'artist_genres']
+[2025-07-22T13:32:41.215+0000] {preprocess.py:64} INFO - Cleaning NaN and duplicates
+[2025-07-22T13:32:41.220+0000] {preprocess.py:66} INFO - After cleaning NaN and duplicates: 985 rows
+[2025-07-22T13:32:41.220+0000] {preprocess.py:73} INFO - Processing release_date
+[2025-07-22T13:32:41.230+0000] {preprocess.py:79} INFO - Completed release_date processing
+[2025-07-22T13:32:41.231+0000] {preprocess.py:36} INFO - Starting text cleaning
+[2025-07-22T13:32:41.236+0000] {preprocess.py:46} INFO - Cleaned column track_name
+[2025-07-22T13:32:41.239+0000] {preprocess.py:46} INFO - Cleaned column artist_name
+[2025-07-22T13:32:41.240+0000] {preprocess.py:50} INFO - Completed text cleaning
+[2025-07-22T13:32:41.240+0000] {preprocess.py:88} INFO - Starting TF-IDF encoding for artist_genres
+[2025-07-22T13:32:41.245+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/sklearn/feature_extraction/text.py:517 UserWarning: The parameter 'token_pattern' will not be used since 'tokenizer' is not None'
+[2025-07-22T13:32:41.251+0000] {preprocess.py:94} ERROR - Error in TF-IDF encoding for artist_genres: empty vocabulary; perhaps the documents only contain stop words
+Traceback (most recent call last):
+  File "/opt/***/dags/preprocess.py", line 91, in preprocess_data
+    genre_tfidf = tfidf.fit_transform(df_clean['artist_genres'].fillna(''))
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/***/.local/lib/python3.12/site-packages/sklearn/feature_extraction/text.py", line 2104, in fit_transform
+    X = super().fit_transform(raw_documents)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/***/.local/lib/python3.12/site-packages/sklearn/base.py", line 1365, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/***/.local/lib/python3.12/site-packages/sklearn/feature_extraction/text.py", line 1376, in fit_transform
+    vocabulary, X = self._count_vocab(raw_documents, self.fixed_vocabulary_)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/***/.local/lib/python3.12/site-packages/sklearn/feature_extraction/text.py", line 1282, in _count_vocab
+    raise ValueError(
+ValueError: empty vocabulary; perhaps the documents only contain stop words
+
+[2025-07-22T13:32:41.253+0000] {preprocess.py:133} ERROR - Error in preprocess_data: empty vocabulary; perhaps the documents only contain stop words
+Traceback (most recent call last):
+  File "/opt/***/dags/preprocess.py", line 91, in preprocess_data
+    genre_tfidf = tfidf.fit_transform(df_clean['artist_genres'].fillna(''))
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/***/.local/lib/python3.12/site-packages/sklearn/feature_extraction/text.py", line 2104, in fit_transform
+    X = super().fit_transform(raw_documents)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/***/.local/lib/python3.12/site-packages/sklearn/base.py", line 1365, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/***/.local/lib/python3.12/site-packages/sklearn/feature_extraction/text.py", line 1376, in fit_transform
+    vocabulary, X = self._count_vocab(raw_documents, self.fixed_vocabulary_)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/***/.local/lib/python3.12/site-packages/sklearn/feature_extraction/text.py", line 1282, in _count_vocab
+    raise ValueError(
+ValueError: empty vocabulary; perhaps the documents only contain stop words
+
+[2025-07-22T13:32:41.257+0000] {spotify_crawl_dag.py:64} ERROR - Error in preprocess_data_wrapper: empty vocabulary; perhaps the documents only contain stop words
+Traceback (most recent call last):
+  File "/opt/***/dags/spotify_crawl_dag.py", line 58, in preprocess_data_wrapper
+    features_file = preprocess_data(df)
+                    ^^^^^^^^^^^^^^^^^^^
+  File "/opt/***/dags/preprocess.py", line 91, in preprocess_data
+    genre_tfidf = tfidf.fit_transform(df_clean['artist_genres'].fillna(''))
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/***/.local/lib/python3.12/site-packages/sklearn/feature_extraction/text.py", line 2104, in fit_transform
+    X = super().fit_transform(raw_documents)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/***/.local/lib/python3.12/site-packages/sklearn/base.py", line 1365, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/***/.local/lib/python3.12/site-packages/sklearn/feature_extraction/text.py", line 1376, in fit_transform
+    vocabulary, X = self._count_vocab(raw_documents, self.fixed_vocabulary_)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/***/.local/lib/python3.12/site-packages/sklearn/feature_extraction/text.py", line 1282, in _count_vocab
+    raise ValueError(
+ValueError: empty vocabulary; perhaps the documents only contain stop words
+
+[2025-07-22T13:32:41.257+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-07-22T13:32:41.258+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 400, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/spotify_crawl_dag.py", line 58, in preprocess_data_wrapper
+    features_file = preprocess_data(df)
+                    ^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/preprocess.py", line 91, in preprocess_data
+    genre_tfidf = tfidf.fit_transform(df_clean['artist_genres'].fillna(''))
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sklearn/feature_extraction/text.py", line 2104, in fit_transform
+    X = super().fit_transform(raw_documents)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sklearn/base.py", line 1365, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sklearn/feature_extraction/text.py", line 1376, in fit_transform
+    vocabulary, X = self._count_vocab(raw_documents, self.fixed_vocabulary_)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/sklearn/feature_extraction/text.py", line 1282, in _count_vocab
+    raise ValueError(
+ValueError: empty vocabulary; perhaps the documents only contain stop words
+[2025-07-22T13:32:41.270+0000] {taskinstance.py:1206} INFO - Marking task as UP_FOR_RETRY. dag_id=mlops_spotify_pipeline, task_id=preprocess_data, run_id=manual__2025-07-22T13:29:51.377793+00:00, execution_date=20250722T132951, start_date=20250722T133240, end_date=20250722T133241
+[2025-07-22T13:32:41.281+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 50 for task preprocess_data (empty vocabulary; perhaps the documents only contain stop words; 332)
+[2025-07-22T13:32:41.291+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2025-07-22T13:32:41.313+0000] {taskinstance.py:3498} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-07-22T13:32:41.315+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

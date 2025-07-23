@@ -1,0 +1,24 @@
+[2025-07-22T10:01:30.788+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-07-22T10:01:30.814+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: mlops_spotify_pipeline.crawl_data manual__2025-07-22T10:01:29.273002+00:00 [queued]>
+[2025-07-22T10:01:30.821+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: mlops_spotify_pipeline.crawl_data manual__2025-07-22T10:01:29.273002+00:00 [queued]>
+[2025-07-22T10:01:30.821+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 2
+[2025-07-22T10:01:30.833+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): crawl_data> on 2025-07-22 10:01:29.273002+00:00
+[2025-07-22T10:01:30.842+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'mlops_spotify_pipeline', 'crawl_data', 'manual__2025-07-22T10:01:29.273002+00:00', '--job-id', '13', '--raw', '--subdir', 'DAGS_FOLDER/spotify_crawl_dag.py', '--cfg-path', '/tmp/tmpwwpdwwpf']
+[2025-07-22T10:01:30.845+0000] {standard_task_runner.py:91} INFO - Job 13: Subtask crawl_data
+[2025-07-22T10:01:30.846+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:61 DeprecationWarning: This process (pid=219) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2025-07-22T10:01:30.847+0000] {standard_task_runner.py:63} INFO - Started process 232 to run task
+[2025-07-22T10:01:30.905+0000] {task_command.py:426} INFO - Running <TaskInstance: mlops_spotify_pipeline.crawl_data manual__2025-07-22T10:01:29.273002+00:00 [running]> on host 9654d77009b9
+[2025-07-22T10:01:30.993+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='mlops_spotify_pipeline' AIRFLOW_CTX_TASK_ID='crawl_data' AIRFLOW_CTX_EXECUTION_DATE='2025-07-22T10:01:29.273002+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-07-22T10:01:29.273002+00:00'
+[2025-07-22T10:01:30.994+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-07-22T10:01:31.040+0000] {logging_mixin.py:188} INFO - Error crawling playlist 6XFOsAdp88ptBCdqUMAfmP: [Errno 2] No such file or directory: 'config/config.yaml'
+[2025-07-22T10:01:31.040+0000] {logging_mixin.py:188} INFO - Error crawling playlist 2JaUyOhoyfmDJlQy1CYjQm: [Errno 2] No such file or directory: 'config/config.yaml'
+[2025-07-22T10:01:31.041+0000] {logging_mixin.py:188} INFO - Error crawling playlist 02zSPmcae3ct4moT8om7kK: [Errno 2] No such file or directory: 'config/config.yaml'
+[2025-07-22T10:01:31.041+0000] {logging_mixin.py:188} INFO - Error crawling playlist 1SkrX3lyW8UBELc68IRC4j: [Errno 2] No such file or directory: 'config/config.yaml'
+[2025-07-22T10:01:31.041+0000] {logging_mixin.py:188} INFO - Error crawling playlist 6VCsmVYfvQI8lmSMEAwWso: [Errno 2] No such file or directory: 'config/config.yaml'
+[2025-07-22T10:01:31.042+0000] {logging_mixin.py:188} INFO - Error crawling playlist 0mrqaVOe6KYEEcaSYhVK4a: [Errno 2] No such file or directory: 'config/config.yaml'
+[2025-07-22T10:01:31.042+0000] {python.py:237} INFO - Done. Returned value was: None
+[2025-07-22T10:01:31.043+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-07-22T10:01:31.055+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=mlops_spotify_pipeline, task_id=crawl_data, run_id=manual__2025-07-22T10:01:29.273002+00:00, execution_date=20250722T100129, start_date=20250722T100130, end_date=20250722T100131
+[2025-07-22T10:01:31.101+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2025-07-22T10:01:31.124+0000] {taskinstance.py:3498} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-07-22T10:01:31.126+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
